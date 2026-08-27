@@ -1,0 +1,73 @@
+board:
+  corners:
+    a8:
+      x: 0.1691
+      y: -0.1998
+      z: 0.1064
+    h1:
+      x: 0.4191
+      y: 0.0453
+      z: 0.1079
+
+  hover_height: 0.15
+  square_size: 0.035
+  origin:
+    x: 0.1691
+    y: -0.1998
+    z: 0.1071
+
+  piece_heights:
+    pawn: -0.067
+    rook: -0.050
+    knight: -0.038
+    bishop: -0.040
+    queen: -0.022
+    king: -0.024
+
+  piece_height: -0.067
+
+capture_zone:
+  origin:
+    x: 0.15
+    y: 0.1
+  dimensions:
+    width: 0.09
+    height: 0.24
+  grid:
+    rows: 8
+    cols: 3
+
+robot:
+  movement:
+    max_velocity_scaling: 0.5
+    max_acceleration_scaling: 0.3
+    planning_time: 5.0
+    planning_attempts: 10
+    replan_attempts: 10
+    replan_delay: 0.1
+
+# ===================== VISION (camera perception) =====================
+vision:
+  extrinsics_file: ~/chess_remote/config/camera_extrinsics.yaml
+  model_occupancy: ~/chess_remote/models/occupancy.pt   # set after training; coordinates work without it
+  conf_threshold: 0.40
+  freshness_s: 10.0
+  camera:
+    type: zed              # zed | realsense  (ZED Mini overhead; D405 later uses realsense + serial)
+    width: 1280
+    height: 720
+    fps: 30
+  board:
+    aruco_dict: DICT_4X4_50
+    min_markers: 2
+    pitch_x: 0.0357        # metres between square centres along files a->h (measured)
+    pitch_y: 0.0350        # metres between square centres along ranks 1->8 (measured)
+    markers:               # board-frame coords of marker CENTRES (origin = a1 centre,
+      10: [-0.045, -0.045] #   +x toward h-file, +y toward rank 8), metres.
+      11: [ 0.295, -0.045] # EDIT all four after gluing the markers and measuring
+      12: [-0.045,  0.290] #   their centre offsets from the a1 square centre!
+      13: [ 0.295,  0.290]
+  park:                    # arm pose that clears the camera's view of the board
+    x: 0.20                # EDIT to a pose verified collision-free in simulation first
+    y: 0.20
+    z: 0.30

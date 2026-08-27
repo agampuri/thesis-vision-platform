@@ -1,0 +1,27 @@
+# Platform zones & safety. ALL coordinates in the ROBOT BASE frame, metres.
+table_z: 0.000            # MEASURE: jog the TCP until it touches the bare table; enter that Z
+workspace_polygon:        # arm acts only inside this XY polygon (counter-clockwise)
+  - [0.12, -0.30]
+  - [0.45, -0.30]
+  - [0.45,  0.32]
+  - [0.12,  0.32]
+park: {x: 0.20, y: 0.20, z: 0.30}        # must clear the camera's view — verify in fake launch
+drop_default: {x: 0.18, y: 0.28, z_release: 0.06}
+zones:
+  red_bin:  {x: 0.18, y: 0.28, z_release: 0.06, aliases: [red bin, red box, red basket]}
+  blue_bin: {x: 0.27, y: 0.28, z_release: 0.06, aliases: [blue bin, blue box, blue basket]}
+gripper:
+  backend: ufactory        # ufactory | dh   (switch to dh once the PGE-50-26 is wired)
+  max_opening_m: 0.016     # MEASURE with calipers; 0.026 for the PGE-50-26
+  axis_offset_rad: 1.5708  # added to object long-axis to get finger yaw — CALIBRATE sign on hardware
+  default_grasp_depth_m: 0.015
+  dh: {port: /dev/ttyUSB0, slave: 1, baud: 115200, default_force_pct: 30, stroke_mm: 26.0}
+safety:
+  max_reach_m: 0.42
+  payload_net_g: 200
+  width_clearance_m: 0.004
+  motion_diff_threshold: 12.0
+sort_rules:                # substring of detected label -> zone name
+  red: red_bin
+  blue: blue_bin
+  default: drop_default

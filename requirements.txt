@@ -1,0 +1,15 @@
+berserk>=0.14.0
+python-chess>=1.999
+chess>=1.11.0
+hidapi>=0.14.0
+numpy>=1.24.0
+PyYAML>=5.4.0
+
+# vision stack
+ultralytics>=8.2.0
+pyrealsense2>=2.54
+opencv-contrib-python>=4.8
+
+# platform v2
+minimalmodbus>=2.0
+# mediapipe>=0.10   # uncomment for S7 point-to-select

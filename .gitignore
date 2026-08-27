@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+dataset/raw/
+runs/
+models/*.pt
+robot/logs/
+admin/invoices/
+
+# private planning & personal documents — never publish
+PLAN_AGAM.md
+MASTER_EXECUTION_GUIDE.md
+PLAYBOOK_DETAILED.md
+PROJECT_PLAN_A_TO_Z.md
+THESIS_WORKFLOW.md
+AI_BUILD_GUIDE.md
+project_brief_for_ai_models.md
+timelog.csv
+admin/
+RUNBOOK_VISION.md
+SYSTEM_DOCUMENTATION.md
+README.md

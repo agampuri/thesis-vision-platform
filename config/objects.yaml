@@ -1,0 +1,9 @@
+# Stage-2 object catalogue. width_m MUST be under gripper max_opening minus 4 mm.
+# 'query' is the text the open-vocabulary detector sees; aliases match user phrasing.
+objects:
+  red_cube:   {query: "red wooden cube",    width_m: 0.020, grasp_depth_m: 0.012, force_pct: 35, mass_g: 15, aliases: [red cube, red block]}
+  blue_cube:  {query: "blue wooden cube",   width_m: 0.020, grasp_depth_m: 0.012, force_pct: 35, mass_g: 15, aliases: [blue cube, blue block]}
+  marker:     {query: "whiteboard marker",  width_m: 0.018, grasp_depth_m: 0.010, force_pct: 30, mass_g: 20, aliases: [marker, pen, whiteboard pen]}
+  glue_stick: {query: "glue stick",         width_m: 0.022, grasp_depth_m: 0.014, force_pct: 35, mass_g: 25, aliases: [glue, glue stick]}
+  dice:       {query: "white dice",         width_m: 0.016, grasp_depth_m: 0.008, force_pct: 25, mass_g: 8,  aliases: [die, dice]}
+  battery:    {query: "AA battery",         width_m: 0.014, grasp_depth_m: 0.012, force_pct: 30, mass_g: 24, aliases: [battery, aa battery]}
